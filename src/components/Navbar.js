@@ -35,7 +35,3 @@ Navbar.prototype = {title: PropTypes.string,
                     aboutText: PropTypes.string,
 }
 
-Navbar.defaultProps = {
-    title: 'set title here',
-    aboutText: 'About'
-};
