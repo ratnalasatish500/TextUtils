@@ -30,9 +30,10 @@ export default function TextForm(props) {
       text.select();
       navigator.clipboard.writeText(text.value);
     }
-    const handleExtraSpaces = () => {
+    //uses Regex
+    const handleExtraSpaces = () => {                            
       let newText = text.split(/[ ]+/);
-      setText(newText.join(" "))
+      setText(newText.join(" "))   
     }
     const handleClearClick = () => {
     let newText = "";
@@ -46,10 +47,10 @@ export default function TextForm(props) {
     // text = "new text"  // wrong way to channge the state, use a function.
   return (
 <>
-<div className="container">
+<div className="container" style={{color: props.mode === 'dark'?'white':'black'}}>
     <h2>{props.heading}</h2>
 <div className="mb-3">
-  <textarea className="form-control" aria-label="Textarea" onChange={handleOnChange} id="myBox" rows="8" value={text}></textarea>
+  <textarea className="form-control" aria-label="Textarea" onChange={handleOnChange} style={{backgroundColor: props.mode === 'dark'?'#1d3557':'white', color: props.mode === 'dark'?'white':'#1d3557' }} id="myBox" rows="8" value={text}></textarea>
 </div>
 <button className="btn btn-primary mx-1" onClick={handleLoClick}>Lowercase</button>
 <button className="btn btn-primary mx-1" onClick={handleUpClick}>Uppercase</button>
@@ -58,10 +59,9 @@ export default function TextForm(props) {
 <button className="btn btn-primary mx-1" onClick={handleExtraSpaces}>Remove extra spaces</button>
 <button className="btn btn-primary mx-1" onClick={handleClearClick}>Clear Text</button>
 </div>
-<div className="container my-3">
+<div className="container my-3" style={{color: props.mode === 'dark'?'white':'black'}}>
   <h3>Text summary</h3>
   <p>Word count : {text.split(" ").length} | Character count : {text.length}</p>
-  <p>{0.008 * text.split(" ").length} minutes read</p>
 </div>
 </>
   )
