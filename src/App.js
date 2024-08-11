@@ -4,7 +4,7 @@ import About from './components/About';
 import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
 import React from 'react';
-
+import { BrowserRouter, Route, Routes, Link, Redirect }from "react-router-dom";
 
 function App() {
   const [mode, setMode] = useState('light');
@@ -23,10 +23,14 @@ function App() {
   }
   return (
  <>
-  <Navbar title="TextUtils" aboutText="About Us" mode={mode} toogleMode={toogleMode}/> 
   <div className="container my-3">
-  <TextForm heading="Enter some text here : " mode={mode}/>
-  {/* <About/> */} 
+  <BrowserRouter>
+  <Navbar title="TextUtils" aboutText="About Us" mode={mode} toogleMode={toogleMode}/> 
+	<Routes>
+	  <Route exact path="/" element={<TextForm heading="Enter some text here : " mode={mode}/>}/>	
+	  <Route exact path="/about" element={<About />}/>
+	</Routes>
+</BrowserRouter>
   </div>
  </>
   );
