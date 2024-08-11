@@ -5,11 +5,13 @@ export default function TextForm(props) {
         console.log("Uppercase was clicked " + text);
         let newText = text.toUpperCase();
         setText(newText);
+        props.showAlert("Converted to UpperCase", "success");
     }
     const handleLoClick = () => {
       console.log("Lowercase was clicked " + text);
       let newText = text.toLowerCase();
       setText(newText);
+      props.showAlert("Converted to LowerCase", "success");
   }
    const speak = () => {
         let msg = new SpeechSynthesisUtterance(text);
@@ -29,6 +31,7 @@ export default function TextForm(props) {
       let text = document.getElementById("myBox");
       text.select();
       navigator.clipboard.writeText(text.value);
+      props.showAlert("Text copied to clipboard", "success");
     }
     //uses Regex
     const handleExtraSpaces = () => {                            
@@ -38,6 +41,7 @@ export default function TextForm(props) {
     const handleClearClick = () => {
     let newText = "";
     setText(newText);
+    props.showAlert("Text Cleared", "success");
 }
     const handleOnChange = (event) => {
         console.log("On Change");
