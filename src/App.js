@@ -54,3 +54,6 @@ function App() {
 
 export default App;
 
+
+//Facing a bug in navbar, also facing issues with alert positioning.
+
