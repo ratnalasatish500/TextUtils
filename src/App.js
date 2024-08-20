@@ -25,13 +25,11 @@ function App() {
   if(mode === 'light'){
     setMode('dark');
     document.body.style.backgroundColor = '#1d3557';
-    document.title = 'TextUtils - Dark mode';
     showAlert("Dark mode enabled", "success");
   }
   else {
     setMode('light');
     document.body.style.backgroundColor = 'white';
-    document.title = 'TextUtils - Light mode';
     showAlert("Light mode enabled", "success");
    }
   }
@@ -42,8 +40,8 @@ function App() {
   <Navbar title="TextUtils" aboutText="About Us" mode={mode} toogleMode={toogleMode}/>
   <Alert alert={alert}/> 
 	<Routes>
-	  <Route exact path="/" element={<TextForm showAlert={showAlert} heading="Enter some text here : " mode={mode}/>}/>	
-	  <Route exact path="/about" element={<About />}/>
+	  <Route exact path="/" element={<TextForm showAlert={showAlert} heading="TextUtils" mode={mode}/>}/>	
+	  <Route exact path="/about" element={<About mode={mode} />}/>
 	</Routes>
 </BrowserRouter>
   </div>
