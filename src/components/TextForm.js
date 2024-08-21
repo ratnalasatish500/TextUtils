@@ -28,10 +28,7 @@ export default function TextForm(props) {
         }
     }
     const handleCopy = () => {
-      let text = document.getElementById("myBox");
-      text.select();
-      navigator.clipboard.writeText(text.value);
-      document.getSelection().removeAllRanges();
+      navigator.clipboard.writeText(text);
       props.showAlert("Text copied to clipboard", "success");
     }
     //uses Regex
@@ -49,7 +46,6 @@ export default function TextForm(props) {
         setText(event.target.value);
     }
     const [text, setText] = useState('');  
-    // text = "new text"  // wrong way to channge the state, use a function.
   return (
 <>
 <div className="container" style={{color: props.mode === 'dark'?'white':'black'}}>
@@ -66,7 +62,7 @@ export default function TextForm(props) {
 </div>
 <div className="container my-3" style={{color: props.mode === 'dark'?'white':'black'}}>
   <h3>Text summary</h3>
-  <p>Word count : {text.split(" ").filter((element)=>{return element.length!==0}).length} | Character count : {text.length}</p>
+  <p>Word count : {text.split(/\s+/).filter((element)=>{return element.length!==0}).length} | Character count : {text.length}</p>
 </div>
 </>
   )
